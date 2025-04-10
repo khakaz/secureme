@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Quiz - SecureMe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: #00ffe7;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffffff;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00ffe7;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #00bfa5;
+    }
+    #quizResult {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Welcome</a>
+    <a href="passwordchecker.html">Password Checker</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="fundamentals.html">Fundamentals</a>
+    <a href="reallifecases.html">Real-life Cases</a>
+  </nav>
+
+  <div class="container">
+    <h2>Cybersecurity Quiz</h2>
+    <form name="quizForm" class="quiz-container">
+      <div class="question">
+        <p>1. What does "phishing" refer to?</p>
+        <input type="radio" name="q1" value="a"> Sending spam messages<br>
+        <input type="radio" name="q1" value="b"> Fraudulent attempts to get sensitive info<br>
+        <input type="radio" name="q1" value="c"> Fishing with tech devices<br>
+      </div>
+      <div class="question">
+        <p>2. Which is a strong password?</p>
+        <input type="radio" name="q2" value="a"> password123<br>
+        <input type="radio" name="q2" value="b"> 123456<br>
+        <input type="radio" name="q2" value="c"> L&x7m!ZqR8@h<br>
+      </div>
+      <div class="question">
+        <p>3. What is a VPN?</p>
+        <input type="radio" name="q3" value="a"> Virtual Private Network<br>
+        <input type="radio" name="q3" value="b"> Very Private Network<br>
+        <input type="radio" name="q3" value="c"> Verified Private Network<br>
+      </div>
+      <div class="question">
+        <p>4. What is two-factor authentication?</p>
+        <input type="radio" name="q4" value="a"> A backup password<br>
+        <input type="radio" name="q4" value="b"> A second layer of security using something you know and something you have<br>
+        <input type="radio" name="q4" value="c"> A new way to log in<br>
+      </div>
+      <div class="question">
+        <p>5. Which of these is a type of malware?</p>
+        <input type="radio" name="q5" value="a"> Adware<br>
+        <input type="radio" name="q5" value="b"> Windows<br>
+        <input type="radio" name="q5" value="c"> HTML<br>
+      </div>
+      <div class="question">
+        <p>6. What does HTTPS stand for?</p>
+        <input type="radio" name="q6" value="a"> Hyper Text Transfer Protocol Secure<br>
+        <input type="radio" name="q6" value="b"> Hyper Text Transmission Protocol Secure<br>
+        <input type="radio" name="q6" value="c"> Highly Technical Transfer Protocol<br>
+      </div>
+      <div class="question">
+        <p>7. What is a DDoS attack?</p>
+        <input type="radio" name="q7" value="a"> Denial of Data Service<br>
+        <input type="radio" name="q7" value="b"> Distributed Denial of Service<br>
+        <input type="radio" name="q7" value="c"> Denial of Service<br>
+      </div>
+      <div class="question">
+        <p>8. Which of these is a security risk of using public Wi-Fi?</p>
+        <input type="radio" name="q8" value="a"> Malware infections<br>
+        <input type="radio" name="q8" value="b"> Encryption of passwords<br>
+        <input type="radio" name="q8" value="c"> Faster connection speeds<br>
+      </div>
+      <div class="question">
+        <p>9. What is a firewall?</p>
+        <input type="radio" name="q9" value="a"> A hardware device that blocks unauthorized access<br>
+        <input type="radio" name="q9" value="b"> A device that monitors network traffic<br>
+        <input type="radio" name="q9" value="c"> A software to improve connection speed<br>
+      </div>
+      <div class="question">
+        <p>10. What is encryption used for?</p>
+        <input type="radio" name="q10" value="a"> To compress data<br>
+        <input type="radio" name="q10" value="b"> To secure data from unauthorized access<br>
+        <input type="radio" name="q10" value="c"> To track data<br>
+      </div>
+      <button type="button" onclick="checkQuiz()">Submit</button>
+      <p id="quizResult"></p>
+    </form>
+  </div>
+
+  <script>
+    function checkQuiz() {
+      const form = document.forms['quizForm'];
+      let score = 0;
+      const total = 10;
+
+      if (form['q1'].value === 'b') score++;
+      if (form['q2'].value === 'c') score++;
+      if (form['q3'].value === 'a') score++;
+      if (form['q4'].value === 'b') score++;
+      if (form['q5'].value === 'a') score++;
+      if (form['q6'].value === 'a') score++;
+      if (form['q7'].value === 'b') score++;
+      if (form['q8'].value === 'a') score++;
+      if (form['q9'].value === 'a') score++;
+      if (form['q10'].value === 'b') score++;
+
+      document.getElementById('quizResult').innerText = `You scored ${score}/${total}.`;
+    }
+  </script>
+
+  <script src="footer.js"></script>
+
+</body>
+</html>
